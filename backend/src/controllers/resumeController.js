@@ -25,6 +25,6 @@ exports.analyzeResume = async (req, res) => {
         res.status(200).json(analysisResult);
     } catch (error) {
         console.error('Error analyzing resume:', error);
-        res.status(500).json({ error: 'An error occurred during resume analysis.' });
+        res.status(500).json({ error: `An error occurred during resume analysis: ${error.message}` });
     }
 };
