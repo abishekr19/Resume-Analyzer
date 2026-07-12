@@ -15,7 +15,7 @@ app.use(express.json());
 app.use('/api', apiRoutes);
 
 // Start server first so the API is available even if MongoDB is down
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server running on port ${PORT}`);
 });
 

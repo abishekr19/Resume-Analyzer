@@ -18,6 +18,10 @@ const upload = multer({
 });
 
 // Routes
+// Health check
+router.get('/', (req, res) => {
+    res.json({ status: 'ok', message: 'AI Resume Analyzer API' });
+});
 router.post('/analyze', upload.single('resume'), resumeController.analyzeResume);
 
 module.exports = router;
