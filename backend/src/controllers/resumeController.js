@@ -1,5 +1,6 @@
 const pdfParser = require('../utils/pdfParser');
 const aiService = require('../services/aiService');
+const store = require('../store/inMemoryStore');
 
 exports.analyzeResume = async (req, res) => {
     try {
@@ -21,8 +22,14 @@ exports.analyzeResume = async (req, res) => {
         // 3. Analyze with AI
         const analysisResult = await aiService.analyze(resumeText, jobDescription);
 
-        // 4. Return result
-        res.status(200).json(analysisResult);
+        // 4. Persist result to in-memory store for demo purposes and return
+        const saved = store.saveAnalysis({
+            filename: req.file?.originalname || 'uploaded_resume.pdf',
+            result: analysisResult,
+            jobDescription: jobDescription || ''
+        });
+
+        res.status(200).json({ id: saved.id, ...saved });
     } catch (error) {
         console.error('Error analyzing resume:', error);
         res.status(500).json({ error: `An error occurred during resume analysis: ${error.message}` });

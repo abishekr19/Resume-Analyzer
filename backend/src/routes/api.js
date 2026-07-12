@@ -24,4 +24,17 @@ router.get('/', (req, res) => {
 });
 router.post('/analyze', upload.single('resume'), resumeController.analyzeResume);
 
+// Demo endpoints to list and fetch in-memory saved analyses
+const store = require('../store/inMemoryStore');
+
+router.get('/analyses', (req, res) => {
+    res.json(store.getAllAnalyses());
+});
+
+router.get('/analyses/:id', (req, res) => {
+    const record = store.getAnalysisById(req.params.id);
+    if (!record) return res.status(404).json({ error: 'Not found' });
+    res.json(record);
+});
+
 module.exports = router;
