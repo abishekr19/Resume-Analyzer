@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-const mongoose = require('mongoose');
+// const mongoose = require('mongoose');
 const apiRoutes = require('./src/routes/api');
 
 const app = express();
@@ -19,11 +19,6 @@ app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server running on port ${PORT}`);
 });
 
-// Database Connection
-// Note: modern mongoose/mongodb drivers no longer accept `useNewUrlParser` and `useUnifiedTopology` options.
-// Add a short serverSelectionTimeoutMS to fail fast if MongoDB isn't available in development.
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/ai-resume-analyzer', {
-    serverSelectionTimeoutMS: 5000
-})
-.then(() => console.log('MongoDB connected successfully'))
-.catch((err) => console.error('MongoDB connection error:', err));
+// Note: No database is required for the current minimal API. If you add DB models later,
+// re-enable mongoose and a proper connection here. For now skip DB connection to keep
+// the API responsive when MongoDB isn't available.
