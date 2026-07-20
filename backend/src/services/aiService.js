@@ -29,6 +29,10 @@ exports.analyze = async (resumeText, jobDescription = '') => {
         prompt += `
         Return a JSON object with the following exact structure:
         {
+            "personalDetails": { "name": string, "email": string, "phone": string, "location": string },
+            "overallSummary": (string summarizing the candidate's profile),
+            "experienceAnalysis": (string analyzing the candidate's work experience),
+            "educationCheck": (string verifying or commenting on education),
             "atsScore": (number between 0 and 100),
             "missingKeywords": (array of strings representing keywords missing from the resume based on general industry standards or the provided job description),
             "grammarIssues": (array of objects with { "issue": string, "suggestion": string }),
@@ -53,8 +57,17 @@ function getMockData(resumeText, jobDescription) {
     // Generate a slightly randomized mock response for UI testing
     const score = Math.floor(Math.random() * 40) + 50; // Random score between 50-90
     return {
+        personalDetails: {
+            name: "John Doe",
+            email: "john.doe@example.com",
+            phone: "+1 234 567 8900",
+            location: "San Francisco, CA"
+        },
+        overallSummary: "A strong candidate with solid frontend experience but lacking some modern cloud-native deployment skills.",
+        experienceAnalysis: "Good progression shown in roles, but could use more quantified achievements. The transition from junior to mid-level is clear.",
+        educationCheck: "B.S. in Computer Science is highly relevant. Consider adding graduation year if recently graduated.",
         atsScore: score,
-        missingKeywords: ["React Testing Library", "CI/CD Pipeline", "Docker", "GraphQL"],
+        missingKeywords: ["React Testing Library", "CI/CD Pipeline", "Docker", "GraphQL", "AWS"],
         grammarIssues: [
             { issue: "Inconsistent tense in experience section", suggestion: "Use past tense for previous roles and present tense for current role." },
             { issue: "Passive voice used", suggestion: "Change 'Responsibilities included managing' to 'Managed'." }

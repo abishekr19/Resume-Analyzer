@@ -1,0 +1,43 @@
+[
+  {
+    "id": "1784565885606-3640",
+    "createdAt": "2026-07-20T16:44:45.606Z",
+    "filename": "1784002310263.pdf",
+    "result": {
+      "personalDetails": {
+        "name": "John Doe",
+        "email": "john.doe@example.com",
+        "phone": "+1 234 567 8900",
+        "location": "San Francisco, CA"
+      },
+      "overallSummary": "A strong candidate with solid frontend experience but lacking some modern cloud-native deployment skills.",
+      "experienceAnalysis": "Good progression shown in roles, but could use more quantified achievements. The transition from junior to mid-level is clear.",
+      "educationCheck": "B.S. in Computer Science is highly relevant. Consider adding graduation year if recently graduated.",
+      "atsScore": 60,
+      "missingKeywords": [
+        "React Testing Library",
+        "CI/CD Pipeline",
+        "Docker",
+        "GraphQL",
+        "AWS"
+      ],
+      "grammarIssues": [
+        {
+          "issue": "Inconsistent tense in experience section",
+          "suggestion": "Use past tense for previous roles and present tense for current role."
+        },
+        {
+          "issue": "Passive voice used",
+          "suggestion": "Change 'Responsibilities included managing' to 'Managed'."
+        }
+      ],
+      "skillGap": "You meet most requirements, but lack explicit experience with containerization (Docker) mentioned in the job description.",
+      "suggestions": [
+        "Quantify your achievements with numbers (e.g., 'Improved performance by 20%').",
+        "Add a clear summary section at the top.",
+        "Tailor your skills section to match the job description more closely."
+      ]
+    },
+    "jobDescription": "Software developer and frontend engineering"
+  }
+]
